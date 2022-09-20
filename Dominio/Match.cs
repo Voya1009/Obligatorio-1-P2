@@ -1,12 +1,13 @@
 ﻿using System;
-using Team;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Dominio
 {
     public abstract class Match
     {
         #region Atributes
-        private static counter = 0;
+        private static int counter = 0;
         private int id;
         private Team localTeam;
         private Team visitingTeam;
@@ -27,7 +28,7 @@ namespace Dominio
 
         public Match(Team localTeam, Team visitingTeam, DateTime expectedDate)
         {
-            this.id = ++this.counter;
+            this.id = ++counter;
             this.localTeam = localTeam;
             this.visitingTeam = visitingTeam;
             this.expectedDate = expectedDate;
