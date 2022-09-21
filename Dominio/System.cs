@@ -4,22 +4,22 @@ using System.Text;
 
 namespace Dominio
 {
-    public class System
+    public class Repository
     {
         #region Attributes
-        private static System instance;
+        private static Repository instance;
         private List<Country> countries = new List<Country>();
         private List<Team> teams = new List<Team>();
         #endregion
 
         #region Singleton
-        public static System Instance
+        public static Repository Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new System();
+                    instance = new Repository();
                 }
                 return instance;
             }
@@ -27,7 +27,7 @@ namespace Dominio
         #endregion
 
         #region Data Preload
-        private System()
+        private Repository()
         {
             #region Countries
             AddCountry(new Country("Catar", "QAT"));
