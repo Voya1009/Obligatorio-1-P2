@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-    class Country
+    public class Country
     {
         #region Atributes
         private int id;
