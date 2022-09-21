@@ -26,6 +26,7 @@ namespace Dominio
         public string Result { get => result; set => result = value; }
         #endregion
 
+        #region Constructor
         public Match(Team localTeam, Team visitingTeam, DateTime expectedDate)
         {
             this.id = ++counter;
@@ -37,6 +38,13 @@ namespace Dominio
         }
 
         public abstract void finalizeMatch();
+        #endregion
 
+        #region Methods
+        public Boolean Validate()
+        {
+            return true;
+        }
+        #endregion
     }
 }

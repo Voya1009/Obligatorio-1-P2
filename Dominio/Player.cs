@@ -13,7 +13,7 @@ namespace Dominio
         private string preferredFoot;
         private int marketValue;
         private string currencyType;        
-        private Dominio.Country country;     
+        private Country country;     
         private string position;
         #endregion
 
@@ -41,6 +41,13 @@ namespace Dominio
             this.currencyType = currencyType;
             this.country = country;
             this.position = position;
+        }
+        #endregion
+
+        #region Methods
+        public Boolean Validate()
+        {
+            return true;
         }
         #endregion
     }

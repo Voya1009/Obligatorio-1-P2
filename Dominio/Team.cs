@@ -24,5 +24,8 @@ namespace Dominio
             this.players = players;
         }
         #endregion
+
+        #region Methods
+        #endregion
     }
 }
