@@ -950,16 +950,41 @@ namespace Dominio
         public List<Team> Teams { get => teams; }
         #endregion
 
-        #region Metods
-        public void AddCountry(Country aCountry)
+        #region Methods
+        public List<Country> GetAllCountries()
         {
-
+            return Countries;
         }
-
         public Country GetCountry(string name)
         {
-
+            foreach(Country c in countries)
+            {
+                if (c.Name == name)
+                {
+                    return c;
+                }
+            }
+            throw new Exception("El pais que estabas buscando no esta registrado");
         }
+        
+        public string AddCountry(Country country)
+        {
+            if (country.Validate())
+            {
+                try
+                {
+                    GetCountry(country.Name);
+                    return "Este pais ya esta registrado";
+                }
+                catch
+                {
+                    countries.Add(country);
+                    return "Pais registrado con exito";
+                }
+            }
+            return "El pais que se intento registrar no es valido";
+        }
+
 
         public void AddPlayer(string name)
         {
