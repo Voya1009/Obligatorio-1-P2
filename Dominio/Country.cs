@@ -7,7 +7,6 @@ namespace Dominio
     public class Country
     {
         #region Atributes
-        private int id;
         private string name;
         private string alphaThree;
         #endregion
@@ -19,15 +18,18 @@ namespace Dominio
         #endregion
 
         #region Constructors
-        public Country(int id, string name, string alphaThree)
+        public Country(string name, string alphaThree)
         {
-            this.id = id;
             this.name = name;
             this.alphaThree = alphaThree;
         }
         #endregion
 
-        #region Metods
+        #region Methods
+        public Boolean Validate()
+        {
+            return true;
+        }
         #endregion
     }
 }
