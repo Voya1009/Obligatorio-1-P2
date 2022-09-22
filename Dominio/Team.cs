@@ -20,12 +20,16 @@ namespace Dominio
         #region Constructors
         public Team(Country country, List<Player> players)
         {
-            this.Country = country;
+            this.country = country;
             this.players = players;
         }
         #endregion
 
         #region Methods
+        public Boolean Validate()
+        {
+            return true;
+        }
         #endregion
     }
 }

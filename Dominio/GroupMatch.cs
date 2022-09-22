@@ -7,7 +7,7 @@ namespace Dominio
     public class GroupMatch : Match
     {
 
-        public override void finalizeMatch()
+        public override void finishedMatch()
         {
 
         }

@@ -11,6 +11,7 @@ namespace Dominio
         private List<Country> countries = new List<Country>();
         private List<Team> teams = new List<Team>();
         private List<Player> players = new List<Player>();
+        private List<Match> matches = new List<Match>();
         #endregion
 
         #region Singleton
@@ -942,16 +943,19 @@ namespace Dominio
             AddPlayer(new Player(870, "7", "Anthony Contreras", DateTime.Parse("2000-01-29"), 1.8, "derecho", 350000, "EUR", GetCountry("Costa Rica"), "Delantero centro"));
             AddPlayer(new Player(871, "11", "Johan Venegas", DateTime.Parse("1988-11-27"), 1.83, "derecho", 325000, "EUR", GetCountry("Costa Rica"), "Delantero centro"));
             #endregion
-
         }
         #endregion
 
         #region Properties
         public List<Country> Countries { get => countries; }
         public List<Team> Teams { get => teams; }
+        public List<Player> Players { get => players; }
+        public List<Match> Matches { get => matches; }
         #endregion
 
         #region Methods
+
+        #region Country
         public List<Country> GetAllCountries()
         {
             return Countries;
@@ -965,7 +969,7 @@ namespace Dominio
                     return c;
                 }
             }
-            throw new Exception("El pais que estabas buscando no esta registrado");
+            throw new Exception("El país que estabas buscando no esta registrado");
         }
         
         public string AddCountry(Country country)
@@ -975,26 +979,130 @@ namespace Dominio
                 try
                 {
                     GetCountry(country.Name);
-                    return "Este pais ya esta registrado";
+                    return "Este país ya está registrado";
                 }
                 catch
                 {
                     countries.Add(country);
-                    return "Pais registrado con exito";
+                    return "País registrado con éxito";
                 }
             }
-            return "El pais que se intento registrar no es valido";
+            return "El país que se intento registrar no es valido";
         }
+        #endregion
 
+        #region Player
         public List<Player> GetAllPlayers()
         {
             return Players;
         }
 
-        public void AddPlayer(string name)
+        public Player GetPlayer(string name)
         {
-            
+            foreach(Player p in players)
+            {
+                if(p.Name == name)
+                {
+                    return p;
+                }
+            }
+            throw new Exception("El jugador no existe");
         }
+
+        public string AddPlayer(Player player)
+        {
+            if (player.Validate())
+            {
+                try
+                {
+                    GetPlayer(player.Name);
+                    return "El jugador ya está registrado";
+                }
+                catch
+                {
+                    players.Add(player);
+                    return "Jugador registrado con éxito";
+                }
+            }
+            return "El jugador que se intento registrar no es valido";
+        }
+        #endregion
+
+        #region Team
+        public List<Team> GetAllTeams()
+        {
+            return Teams;
+        }
+
+        public Team GetTeam(Country country)
+        {
+            foreach(Team t in teams)
+            {
+                if (t.Country.Name == country.Name)
+                {
+                    return t;
+                }
+            }
+            throw new Exception("El equipo que estabas buscando no fue registrado");
+        }
+
+        public string AddTeam(Team team)
+        {
+            if (team.Validate())
+            {
+                try
+                {
+                    GetTeam(team.Country);
+                    return "El equipo ya está registrado";
+                }
+                catch
+                {
+                    teams.Add(team);
+                    return "El equipo fue registrado con éxito";
+                }
+            }
+            return "El equipo que se intento registrar no es valido";
+        }
+        #endregion
+
+        #region Match
+        public List<Match> GetAllMatches()
+        {
+            return Matches;
+        }
+
+        public Match GetMatch(int id)
+        {
+            foreach (Match m in matches)
+            {
+                if (m.Id == id)
+                {
+                    return m;
+                }
+            }
+            throw new Exception("El partido que estabas buscando no fue registrado");
+        }
+
+        public string AddMatch(Match match)
+        {
+            if (match.Validate())
+            {
+                try
+                {
+                    GetMatch(match.Id);
+                    return "El partido ya está registrado";
+                }
+                catch
+                {
+                    matches.Add(match);
+                    return "El partido fue registrado con éxito";
+                }
+            }
+            return "El partido que se intento registrar no es valido";
+        }
+        #endregion
+
         #endregion
     }
 }
+
