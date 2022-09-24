@@ -12,7 +12,6 @@ namespace Dominio
         #endregion
 
         #region Properties
-        public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string AlphaThree { get => alphaThree; set => alphaThree = value; }
         #endregion
@@ -28,7 +27,21 @@ namespace Dominio
         #region Methods
         public Boolean Validate()
         {
+            if(this.AlphaThree.Length != 3)
+            {
+                return false;
+            }
             return true;
+        }
+        public override string ToString()
+        {
+            return $"Nombre: {Name}, AlphaThree: {AlphaThree}.";
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+            Country c = (Country)obj;
+            return c.Name.ToLower() == name.ToLower();
         }
         #endregion
     }

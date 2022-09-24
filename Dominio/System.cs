@@ -25,7 +25,7 @@ namespace Dominio
             }
         }
         #endregion
-
+        /*
         #region Data Preload
         private Repository()
         {
@@ -944,7 +944,7 @@ namespace Dominio
 
         }
         #endregion
-
+        */
         #region Properties
         public List<Country> Countries { get => countries; }
         public List<Team> Teams { get => teams; }
@@ -959,7 +959,8 @@ namespace Dominio
         {
             foreach(Country c in countries)
             {
-                if (c.Name == name)
+                //ToLower() return a copy of an object in lower case, we do this in order to not take in consideration de lower case at the time of comparing
+                if (c.Name.ToLower() == name.ToLower())
                 {
                     return c;
                 }
