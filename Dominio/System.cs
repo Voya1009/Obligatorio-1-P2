@@ -10,6 +10,8 @@ namespace Dominio
         private static Repository instance;
         private List<Country> countries = new List<Country>();
         private List<Team> teams = new List<Team>();
+        private List<Player> players = new List<Player>();
+        private List<Match> matches = new List<Match>();
         #endregion
 
         #region Singleton
@@ -69,20 +71,20 @@ namespace Dominio
             #endregion
 
             #region Players
-            AddPlayer(new Player(1, "23", "Emiliano Martínez", DateTime.Parse("1992-09-02"), 1.95, "derecho", 28000000, "EUR", GetCountry("Argentina"), "Portero"));
-            AddPlayer(new Player(2, "12", "Gerónimo Rulli", DateTime.Parse("1992-05-20"), 1.89, "derecho", 6000000, "EUR", GetCountry("Argentina"), "Portero"));
-            AddPlayer(new Player(3, "1", "Franco Armani", DateTime.Parse("1986-10-16"), 1.89, "derecho", 3500000, "EUR", GetCountry("Argentina"), "Portero"));
-            AddPlayer(new Player(4, "13", "Cristian Romero", DateTime.Parse("1998-04-27"), 1.85, "derecho", 48000000, "EUR", GetCountry("Argentina"), "Defensa central"));
+            AddPlayer(new Player(1, "23", "Emiliano Martínez", DateTime.Parse("1992-09-02"), 1.95, "derecho", 28000000, "EUR", GetCountry("Argentina"), "Portero");
+            AddPlayer(new Player(2, "12", "Gerónimo Rulli", DateTime.Parse("1992-05-20"), 1.89, "derecho", 6000000, "EUR", GetCountry("Argentina"), "Portero");
+            AddPlayer(new Player(3, "1", "Franco Armani", DateTime.Parse("1986-10-16"), 1.89, "derecho", 3500000, "EUR", GetCountry("Argentina"), "Portero");
+            AddPlayer(new Player(4, "13", "Cristian Romero", DateTime.Parse("1998-04-27"), 1.85, "derecho", 48000000, "EUR", GetCountry("Argentina"), "Defensa central");
             AddPlayer(new Player(5, "16", "Lisandro Martínez", DateTime.Parse("1998-01-18"), 1.75, "izquierdo", 32000000, "EUR", GetCountry("Argentina"), "Defensa central"));
-            AddPlayer(new Player(6, "25", "Marcos Senesi", DateTime.Parse("1997-05-10"), 1.85, "izquierdo", 17000000, "EUR", GetCountry("Argentina"), "Defensa central"));
-            AddPlayer(new Player(7, "114", "Lucas Martínez Quarta", DateTime.Parse("1996-05-10"), 1.83, "derecho", 12000000, "EUR", GetCountry("Argentina"), "Defensa central"));
-            AddPlayer(new Player(8, "6", "Germán Pezzella", DateTime.Parse("1991-06-27"), 1.87, "derecho", 5000000, "EUR", GetCountry("Argentina"), "Defensa central"));
-            AddPlayer(new Player(9, "19", "Nicolás Otamendi", DateTime.Parse("1988-02-12"), 1.83, "derecho", 3500000, "EUR", GetCountry("Argentina"), "Defensa central"));
-            AddPlayer(new Player(10, "8", "Marcos Acuña", DateTime.Parse("1991-10-28"), 1.72, "izquierdo", 18000000, "EUR", GetCountry("Argentina"), "Lateral izquierdo"));
-            AddPlayer(new Player(11, "3", "Nicolás Tagliafico", DateTime.Parse("1992-08-31"), 1.72, "izquierdo", 11000000, "EUR", GetCountry("Argentina"), "Lateral izquierdo"));
-            AddPlayer(new Player(12, "2", "Juan Foyth", DateTime.Parse("1998-01-12"), 1.87, "derecho", 25000000, "EUR", GetCountry("Argentina"), "Lateral derecho"));
-            AddPlayer(new Player(13, "26", "Nahuel Molina", DateTime.Parse("1998-04-06"), 1.75, "derecho", 20000000, "EUR", GetCountry("Argentina"), "Lateral derecho"));
-            AddPlayer(new Player(14, "4", "Gonzalo Montiel", DateTime.Parse("1997-01-01"), 1.76, "derecho", 14000000, "EUR", GetCountry("Argentina"), "Lateral derecho"));
+            AddPlayer(new Player(6, "25", "Marcos Senesi", DateTime.Parse("1997-05-10"), 1.85, "izquierdo", 17000000, "EUR", GetCountry("Argentina"), "Defensa central");
+            AddPlayer(new Player(7, "114", "Lucas Martínez Quarta", DateTime.Parse("1996-05-10"), 1.83, "derecho", 12000000, "EUR", GetCountry("Argentina"), "Defensa central");
+            AddPlayer(new Player(8, "6", "Germán Pezzella", DateTime.Parse("1991-06-27"), 1.87, "derecho", 5000000, "EUR", GetCountry("Argentina"), "Defensa central");
+            AddPlayer(new Player(9, "19", "Nicolás Otamendi", DateTime.Parse("1988-02-12"), 1.83, "derecho", 3500000, "EUR", GetCountry("Argentina"), "Defensa central");
+            AddPlayer(new Player(10, "8", "Marcos Acuña", DateTime.Parse("1991-10-28"), 1.72, "izquierdo", 18000000, "EUR", GetCountry("Argentina"), "Lateral izquierdo");
+            AddPlayer(new Player(11, "3", "Nicolás Tagliafico", DateTime.Parse("1992-08-31"), 1.72, "izquierdo", 11000000, "EUR", GetCountry("Argentina"), "Lateral izquierdo");
+            AddPlayer(new Player(12, "2", "Juan Foyth", DateTime.Parse("1998-01-12"), 1.87, "derecho", 25000000, "EUR", GetCountry("Argentina"), "Lateral derecho");
+            AddPlayer(new Player(13, "26", "Nahuel Molina", DateTime.Parse("1998-04-06"), 1.75, "derecho", 20000000, "EUR", GetCountry("Argentina"), "Lateral derecho");
+            AddPlayer(new Player(14, "4", "Gonzalo Montiel", DateTime.Parse("1997-01-01"), 1.76, "derecho", 14000000, "EUR", GetCountry("Argentina"), "Lateral derecho");
             AddPlayer(new Player(15, "18", "Guido Rodríguez", DateTime.Parse("1994-04-12"), 1.85, "derecho", 25000000, "EUR", GetCountry("Argentina"), "Pivote"));
             AddPlayer(new Player(16, "NDF", "Leandro Paredes", DateTime.Parse("1994-06-29"), 1.8, "derecho", 17000000, "EUR", GetCountry("Argentina"), "Pivote"));
             AddPlayer(new Player(17, "7", "Rodrigo de Paul", DateTime.Parse("1994-05-24"), 1.8, "derecho", 40000000, "EUR", GetCountry("Argentina"), "Mediocentro"));
@@ -941,16 +943,19 @@ namespace Dominio
             AddPlayer(new Player(870, "7", "Anthony Contreras", DateTime.Parse("2000-01-29"), 1.8, "derecho", 350000, "EUR", GetCountry("Costa Rica"), "Delantero centro"));
             AddPlayer(new Player(871, "11", "Johan Venegas", DateTime.Parse("1988-11-27"), 1.83, "derecho", 325000, "EUR", GetCountry("Costa Rica"), "Delantero centro"));
             #endregion
-
         }
         #endregion
         */
         #region Properties
         public List<Country> Countries { get => countries; }
         public List<Team> Teams { get => teams; }
+        public List<Player> Players { get => players; }
+        public List<Match> Matches { get => matches; }
         #endregion
 
         #region Methods
+
+        #region Country
         public List<Country> GetAllCountries()
         {
             return Countries;
@@ -965,7 +970,7 @@ namespace Dominio
                     return c;
                 }
             }
-            throw new Exception("El pais que estabas buscando no esta registrado");
+            throw new Exception("El país que estabas buscando no esta registrado");
         }
         
         public string AddCountry(Country country)
@@ -975,22 +980,130 @@ namespace Dominio
                 try
                 {
                     GetCountry(country.Name);
-                    return "Este pais ya esta registrado";
+                    return "Este país ya está registrado";
                 }
                 catch
                 {
                     countries.Add(country);
-                    return "Pais registrado con exito";
+                    return "País registrado con éxito";
                 }
             }
-            return "El pais que se intento registrar no es valido";
+            return "El país que se intento registrar no es valido";
         }
+        #endregion
 
-
-        public void AddPlayer(string name)
+        #region Player
+        public List<Player> GetAllPlayers()
         {
-
+            return Players;
         }
+
+        public Player GetPlayer(string name)
+        {
+            foreach(Player p in players)
+            {
+                if(p.Name == name)
+                {
+                    return p;
+                }
+            }
+            throw new Exception("El jugador no existe");
+        }
+
+        public string AddPlayer(Player player)
+        {
+            if (player.Validate())
+            {
+                try
+                {
+                    GetPlayer(player.Name);
+                    return "El jugador ya está registrado";
+                }
+                catch
+                {
+                    players.Add(player);
+                    return "Jugador registrado con éxito";
+                }
+            }
+            return "El jugador que se intento registrar no es valido";
+        }
+        #endregion
+
+        #region Team
+        public List<Team> GetAllTeams()
+        {
+            return Teams;
+        }
+
+        public Team GetTeam(Country country)
+        {
+            foreach(Team t in teams)
+            {
+                if (t.Country.Name == country.Name)
+                {
+                    return t;
+                }
+            }
+            throw new Exception("El equipo que estabas buscando no fue registrado");
+        }
+
+        public string AddTeam(Team team)
+        {
+            if (team.Validate())
+            {
+                try
+                {
+                    GetTeam(team.Country);
+                    return "El equipo ya está registrado";
+                }
+                catch
+                {
+                    teams.Add(team);
+                    return "El equipo fue registrado con éxito";
+                }
+            }
+            return "El equipo que se intento registrar no es valido";
+        }
+        #endregion
+
+        #region Match
+        public List<Match> GetAllMatches()
+        {
+            return Matches;
+        }
+
+        public Match GetMatch(int id)
+        {
+            foreach (Match m in matches)
+            {
+                if (m.Id == id)
+                {
+                    return m;
+                }
+            }
+            throw new Exception("El partido que estabas buscando no fue registrado");
+        }
+
+        public string AddMatch(Match match)
+        {
+            if (match.Validate())
+            {
+                try
+                {
+                    GetMatch(match.Id);
+                    return "El partido ya está registrado";
+                }
+                catch
+                {
+                    matches.Add(match);
+                    return "El partido fue registrado con éxito";
+                }
+            }
+            return "El partido que se intento registrar no es valido";
+        }
+        #endregion
+
         #endregion
     }
 }
+
