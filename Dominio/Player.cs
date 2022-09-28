@@ -5,15 +5,15 @@ namespace Dominio
     public class Player
     {
         #region Atributes
-        private int id;        
+        private int id;
         private string number;
         private string name;
-        private DateTime birthDate;        
+        private DateTime birthDate;
         private double height;
         private string preferredFoot;
         private int marketValue;
-        private string currencyType;        
-        private Dominio.Country country;     
+        private string currencyType;
+        private Country country;
         private string position;
         #endregion
 
@@ -37,10 +37,21 @@ namespace Dominio
             this.birthDate = birthDate;
             this.height = height;
             this.preferredFoot = preferedFoot;
-            this.marketValue = marketValue;            
+            this.marketValue = marketValue;
             this.currencyType = currencyType;
             this.country = country;
             this.position = position;
+        }
+        #endregion
+
+        #region Methods
+        public Boolean Validate()
+        {
+            if (this is null && this.marketValue == 0) return false;
+            else
+            {
+                return true;
+            }
         }
         #endregion
     }

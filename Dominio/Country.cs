@@ -42,7 +42,7 @@ namespace Dominio
             if (obj == null || GetType() != obj.GetType()) return false;
             Country c = (Country)obj;
             return c.Name.ToLower() == name.ToLower();
-        }
+        }       
         #endregion
     }
 }
