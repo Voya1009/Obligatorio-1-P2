@@ -6,11 +6,13 @@ namespace Dominio
 {
     public class GroupMatch : Match
     {
-
-        public override void finishedMatch()
+        public GroupMatch(Team localTeam, Team visitingTeam, DateTime expectedDate) : base(localTeam, visitingTeam, expectedDate)
         {
-
         }
 
+        public override void FinalizeMatch()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

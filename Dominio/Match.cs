@@ -13,20 +13,21 @@ namespace Dominio
         private Team visitingTeam;
         private DateTime expectedDate;
         private Boolean hasEnded;
-        //event list
+        private List <Event> events;
         private string result;
         #endregion
 
         #region properties
-        public int Id { get => id; set => id = value; }
-        public Team LocalTeam { get => localTeam; set => localTeam = value; }
-        public Team VisitingTeam { get => visitingTeam; set => visitingTeam = value; }
-        public DateTime ExpectedDate { get => expectedDate; set => expectedDate = value; }
+        public int Id { get => id; }
+        public Team LocalTeam { get => localTeam;  }
+        public Team VisitingTeam { get => visitingTeam;  }
+        public DateTime ExpectedDate { get => expectedDate;  }
         public bool HasEnded { get => hasEnded; set => hasEnded = value; }
         public string Result { get => result; set => result = value; }
+        public List<Event> Events { get => events; }
         #endregion
 
-        #region Constructor
+        
         public Match(Team localTeam, Team visitingTeam, DateTime expectedDate)
         {
             this.id = ++counter;
@@ -35,10 +36,13 @@ namespace Dominio
             this.expectedDate = expectedDate;
             this.hasEnded = false;
             this.result = "pendiente";
+            this.events = new List<Event>();
         }
 
-        public abstract void finalizeMatch();
-        #endregion
+        public abstract void FinalizeMatch();
+        public void AddEvent(Event evt) {
+            this.events.Add(evt);
+        }
 
         #region Methods
         public Boolean Validate()
