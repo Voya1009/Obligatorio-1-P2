@@ -27,6 +27,7 @@ namespace Dominio
         public List<Event> Events { get => events; }
         #endregion
 
+        
         public Match(Team localTeam, Team visitingTeam, DateTime expectedDate)
         {
             this.id = ++counter;
@@ -43,5 +44,11 @@ namespace Dominio
             this.events.Add(evt);
         }
 
+        #region Methods
+        public Boolean Validate()
+        {
+            return true;
+        }
+        #endregion
     }
 }
