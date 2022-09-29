@@ -12,6 +12,7 @@ namespace Dominio
         private List<Team> teams = new List<Team>();
         private List<Player> players = new List<Player>();
         private List<Match> matches = new List<Match>();
+        private List<Journalist> journalists = new List<Journalist>();
         #endregion
 
         #region Singleton
@@ -65,7 +66,7 @@ namespace Dominio
             AddCountry(new Country("Australia", "AUS"));
             AddCountry(new Country("Costa Rica", "CRI"));
             #endregion
-            
+
             #region Players
             AddPlayer(new Player(1, "23", "Emiliano Martínez", DateTime.Parse("1992-09-02"), 1.95, "derecho", 28000000, "EUR", GetCountry("Argentina"), "Portero"));
             AddPlayer(new Player(2, "12", "Gerónimo Rulli", DateTime.Parse("1992-05-20"), 1.89, "derecho", 6000000, "EUR", GetCountry("Argentina"), "Portero"));
@@ -945,6 +946,7 @@ namespace Dominio
             #endregion
 
             #region Journalists
+            AddJournalist(new Journalist(1, "Aitor Tilla", "haytortilla@gmail.com", "Tortillero"));
             #endregion
 
             #region Group Stage Matches
@@ -960,6 +962,7 @@ namespace Dominio
         public List<Team> Teams { get => teams; }
         public List<Player> Players { get => players; }
         public List<Match> Matches { get => matches; }
+        public List<Journalist> Journalists { get => journalists; }
         #endregion
 
         #region Methods
@@ -997,7 +1000,7 @@ namespace Dominio
                     return "País registrado con éxito";
                 }
             }
-            return "El país que se intento registrar no es valido";
+            return "El país que se intento registrar no es válido";
         }
         #endregion
 
@@ -1034,7 +1037,7 @@ namespace Dominio
                     return "Jugador registrado con éxito";
                 }
             }
-            return "El jugador que se intento registrar no es valido";
+            return "El jugador que se intento registrar no es válido";
         }
 
         public List<Player> GetPlayersByCountry(Country country)
@@ -1082,7 +1085,7 @@ namespace Dominio
                     return "El equipo fue registrado con éxito";
                 }
             }
-            return "El equipo que se intento registrar no es valido";
+            return "El equipo que se intento registrar no es válido";
         }
         private Team CreateTeam(Country country)
         {
@@ -1096,7 +1099,7 @@ namespace Dominio
             {
                 // Se crea una seleccion por cada país en la lista.
                 Team newTeam = CreateTeam(c);
-                AddTeam(newTeam);                   
+                AddTeam(newTeam);
             }
         }
         private List<Player> PlayersOff(Country country)
@@ -1146,7 +1149,44 @@ namespace Dominio
                     return "El partido fue registrado con éxito";
                 }
             }
-            return "El partido que se intento registrar no es valido";
+            return "El partido que se intento registrar no es válido";
+        }
+        #endregion
+
+        #region Journalist
+        public List<Journalist> GetAllJournalists()
+        {
+            return Journalists;
+        }
+
+        public Journalist GetJournalist(string name)
+        {
+            foreach (Journalist j in journalists)
+            {
+                if (j.Name == name)
+                {
+                    return j;
+                }
+            }
+            throw new Exception("El periodista que estabas buscando no fue registrado");
+        }
+
+        public string AddJournalist(Journalist journalist)
+        {
+            if (journalist.Validate())
+            {
+                try
+                {
+                    GetJournalist(journalist.Name);
+                    return "El periodista ya está registrado";
+                }
+                catch
+                {
+                    journalists.Add(journalist);
+                    return "El periodista fue ingresado con éxito";
+                }
+            }
+            return "El periodista que se intento ingresar no es válido.";
         }
         #endregion
 

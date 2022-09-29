@@ -26,7 +26,7 @@ namespace Dominio
         public string Result { get => result; set => result = value; }
         #endregion
 
-        #region Constructor
+        #region Constructors
         public Match(Team localTeam, Team visitingTeam, DateTime expectedDate)
         {
             this.id = ++counter;

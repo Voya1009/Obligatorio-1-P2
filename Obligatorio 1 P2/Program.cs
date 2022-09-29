@@ -7,7 +7,15 @@ namespace Obligatorio_1_P2
     class Program
     {
         static Repository repository = Repository.Instance;
-        private static string[] menuOptions = { "1. Agregar pais", "2. Buscar pais", "3. listar paises" };
+        private static string[] menuOptions =
+            {
+                "1. Agregar periodista",
+                "2. Asignar monto de referencia",
+                "3. Listar partidos por jugador",
+                "4. Listar jugadores expulsados",
+                "5. Partido con mas goles efectuados (selección)",
+                "6. Listar Jugadores que hayan convertido"
+            };
         static void Main(string[] args)
         {
             int selectedOption = -1;
@@ -16,31 +24,46 @@ namespace Obligatorio_1_P2
                 DisplayOptions(menuOptions);
                 selectedOption = evtInt();
                 Console.Clear();
-                if(selectedOption != 0)
+                if (selectedOption != 0)
                 {
                     switch (selectedOption)
                     {
                         case 1:
                             Console.Clear();
-                            AddCountry();
+                            AddJournalist();
                             Console.WriteLine("");
                             break;
                         case 2:
                             Console.Clear();
-                            GetCountry();
+                            AsignReferenceValue();
                             Console.WriteLine("");
                             break;
                         case 3:
                             Console.Clear();
-                            GetAllCountries();
+                            MatchesByPlayer();
                             Console.WriteLine("");
                             break;
+                        case 4:
+                            Console.Clear();
+                            PlayersExpelled();
+                            Console.WriteLine("");
+                            break;
+                        case 5:
+                            Console.Clear();
+                            MatchWithMoreGoals();
+                            Console.WriteLine("");
+                            break;
+                        case 6:
+                            Console.Clear();
+                            PlayersWhoScored();
+                            Console.WriteLine("");
+                            break;                       
                         default:
-                            Console.WriteLine("Invalid value, please try again");
+                            Console.WriteLine("El valor ingresado no es válido, intente nuevamente");
                             break;
                     }
                 }
-                    
+
             }
         }
         static void DisplayOptions(string[] recievedOptions)
@@ -94,7 +117,7 @@ namespace Obligatorio_1_P2
                 Country newCountry = repository.GetCountry(name);
                 Console.WriteLine(newCountry.ToString());
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -103,7 +126,7 @@ namespace Obligatorio_1_P2
         {
             Console.WriteLine("Paises registrados");
             List<Country> countryList = repository.GetAllCountries();
-            foreach(Country c in countryList)
+            foreach (Country c in countryList)
             {
                 Console.WriteLine(c.ToString());
             }
