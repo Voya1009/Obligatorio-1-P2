@@ -14,8 +14,7 @@ namespace Dominio
         private int marketValue;
         private string currencyType;
         private Country country;
-        private string position;
-        private static int referenceValue = 50000000;
+        private string position;        
         #endregion
 
         #region Properties
@@ -27,7 +26,7 @@ namespace Dominio
         public int MarketValue { get => marketValue; set => marketValue = value; }
         public Country Country { get => country; set => country = value; }
         public string Position { get => position; set => position = value; }
-        public int ReferenceValue { get => referenceValue; set => referenceValue = value; }
+        
         #endregion
 
         #region Constructors      

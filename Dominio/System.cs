@@ -7,7 +7,8 @@ namespace Dominio
     public class Repository
     {
         #region Attributes
-        private static Repository instance;
+        public static Repository instance;
+        public static int referenceValue = 50000000;
         private List<Country> countries = new List<Country>();
         private List<Team> teams = new List<Team>();
         private List<Player> players = new List<Player>();
@@ -27,6 +28,15 @@ namespace Dominio
                 return instance;
             }
         }
+        #endregion
+
+        #region Properties
+        public List<Country> Countries { get => countries; }
+        public List<Team> Teams { get => teams; }
+        public List<Player> Players { get => players; }
+        public List<Match> Matches { get => matches; }
+        public List<Journalist> Journalists { get => journalists; }
+        public int ReferenceValue { get => referenceValue; set => referenceValue = value; }
         #endregion
 
         #region Data Preload
@@ -946,7 +956,7 @@ namespace Dominio
             #endregion
 
             #region Journalists
-            AddJournalist(new Journalist(1, "Aitor Tilla", "haytortilla@gmail.com", "Tortillero"));
+            AddJournalist(new Journalist("Aitor Tilla", "haytortilla@gmail.com", "Tortillero"));
             #endregion
 
             #region Group Stage Matches
@@ -955,15 +965,7 @@ namespace Dominio
             #region Playoffs Matches
             #endregion
         }
-        #endregion
-
-        #region Properties
-        public List<Country> Countries { get => countries; }
-        public List<Team> Teams { get => teams; }
-        public List<Player> Players { get => players; }
-        public List<Match> Matches { get => matches; }
-        public List<Journalist> Journalists { get => journalists; }
-        #endregion
+        #endregion        
 
         #region Methods
 

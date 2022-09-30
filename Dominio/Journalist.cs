@@ -8,22 +8,23 @@ namespace Dominio
     {
         #region Attributes
         private int id;
+        private static int lastId;
         private string name;
         private string mail;
         private string password;
         #endregion
 
         #region Properties
-        public int Id { get => id; set => id = value; }
+        public int Id { get => id; }
         public string Name { get => name; set => name = value; }
         public string Mail { get => mail; set => mail = value; }
         public string Password { get => password; set => password = value; }
         #endregion
 
         #region Constructors
-        public Journalist(int id, string name, string mail, string password)
+        public Journalist(string name, string mail, string password)
         {
-            this.id = id;
+            this.id = ++lastId;
             this.name = name;
             this.mail = mail;
             this.password = password;
@@ -33,10 +34,10 @@ namespace Dominio
         #region Methods
         public Boolean Validate()
         {
-            if (this.name == null) return false;
+            if (this.name == null || !name.Contains(" ")) return false;
             if (this.mail == null) return false;
             if (this.password == null) return false;
-            if (this.mail.Contains("@") || this.mail.StartsWith("@") || this.mail.EndsWith("@")) return false;
+            if (!this.mail.Contains("@") || mail.StartsWith("@") || mail.EndsWith("@")) return false;
             if (this.password.Length < 8) return false;
             return true;
         }

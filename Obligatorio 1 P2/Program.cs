@@ -57,13 +57,12 @@ namespace Obligatorio_1_P2
                             Console.Clear();
                             PlayersWhoScored();
                             Console.WriteLine("");
-                            break;                       
+                            break;
                         default:
                             Console.WriteLine("El valor ingresado no es válido, intente nuevamente");
                             break;
                     }
                 }
-
             }
         }
         static void DisplayOptions(string[] recievedOptions)
@@ -73,13 +72,14 @@ namespace Obligatorio_1_P2
                 Console.WriteLine(option);
             }
         }
+
+        #region Events
         static int evtInt()
         {
             int result;
             while (!int.TryParse(Console.ReadLine(), out result))
             {
                 Console.WriteLine("Invalid value, please try again");
-
             }
             return result;
         }
@@ -89,6 +89,9 @@ namespace Obligatorio_1_P2
             string texto = Console.ReadLine();
             return texto;
         }
+        #endregion
+
+        #region Country
         static void AddCountry()
         {
             Boolean valid = false;
@@ -131,5 +134,68 @@ namespace Obligatorio_1_P2
                 Console.WriteLine(c.ToString());
             }
         }
+        #endregion
+
+        // 1.
+        static void AddJournalist()
+        {
+            Boolean valid = false;
+            while (!valid)
+            {
+                string name = evtString("Ingrese el nombre completo del periodista.");
+                string mail = evtString("Ingrese el mail.");
+                string password = evtString("Ingrese la contraseña.");
+                Journalist newJournalist = new Journalist(name, mail, password);
+                if (newJournalist.Validate())
+                {
+                    valid = true;
+                    Console.WriteLine(repository.AddJournalist(newJournalist));
+                    Console.WriteLine("El periodista ha sido ingresado con éxito.");
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Los datos ingresados no son correctos, intente nuevamente.");
+                }
+            }
+        }
+        // 2.
+        static void AsignReferenceValue()
+        {
+            Console.WriteLine("Indique el monto de referencia");
+            int newReferenceValue = evtInt();
+            Repository.referenceValue = newReferenceValue;
+            Console.WriteLine($"El nuevo monto de referencia es: {Repository.referenceValue}");
+        }
+        // 3.
+        static void MatchesByPlayer()
+        {
+            string myPlayer = evtString("Ingrese el nombre del jugador");
+            List<Match> matchList = repository.GetAllMatches();
+            int totalMatches = 0;
+            /*
+            foreach (Match m in matchList)
+            {
+                if () totalMatches++;                
+            }
+            */
+        }
+        // 4.
+        static void PlayersExpelled()
+        {
+            List<Match> matchList = repository.GetAllMatches();
+        }
+        // 5.
+        static void MatchWithMoreGoals()
+        {
+            List<Match> matchList = repository.GetAllMatches();
+        }
+        // 6.
+        static void PlayersWhoScored()
+        {
+            List<Match> matchList = repository.GetAllMatches();
+        }
+
+
     }
 }
