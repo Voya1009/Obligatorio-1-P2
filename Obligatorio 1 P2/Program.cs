@@ -30,33 +30,27 @@ namespace Obligatorio_1_P2
                     {
                         case 1:
                             Console.Clear();
-                            AddJournalist();
-                            Console.WriteLine("");
+                            repository.AskJournalist();
                             break;
                         case 2:
                             Console.Clear();
-                            AsignReferenceValue();
-                            Console.WriteLine("");
+                            repository.AsignReferenceValue();
                             break;
                         case 3:
                             Console.Clear();
-                            MatchesByPlayer();
-                            Console.WriteLine("");
+                            repository.MatchesByPlayer();
                             break;
                         case 4:
                             Console.Clear();
-                            PlayersExpelled();
-                            Console.WriteLine("");
+                            repository.PlayersExpelled();
                             break;
                         case 5:
                             Console.Clear();
-                            MatchWithMoreGoals();
-                            Console.WriteLine("");
+                            repository.MatchWithMoreGoals();
                             break;
                         case 6:
                             Console.Clear();
-                            PlayersWhoScored();
-                            Console.WriteLine("");
+                            repository.PlayersWhoScored();
                             break;
                         default:
                             Console.WriteLine("El valor ingresado no es válido, intente nuevamente");
@@ -73,7 +67,7 @@ namespace Obligatorio_1_P2
             }
         }
 
-        #region Events
+        #region Evts
         static int evtInt()
         {
             int result;
@@ -91,7 +85,7 @@ namespace Obligatorio_1_P2
         }
         #endregion
 
-        #region Country
+        /*#region Country
         static void AddCountry()
         {
             Boolean valid = false;
@@ -134,68 +128,6 @@ namespace Obligatorio_1_P2
                 Console.WriteLine(c.ToString());
             }
         }
-        #endregion
-
-        // 1.
-        static void AddJournalist()
-        {
-            Boolean valid = false;
-            while (!valid)
-            {
-                string name = evtString("Ingrese el nombre completo del periodista.");
-                string mail = evtString("Ingrese el mail.");
-                string password = evtString("Ingrese la contraseña.");
-                Journalist newJournalist = new Journalist(name, mail, password);
-                if (newJournalist.Validate())
-                {
-                    valid = true;
-                    Console.WriteLine(repository.AddJournalist(newJournalist));
-                    Console.WriteLine("El periodista ha sido ingresado con éxito.");
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Los datos ingresados no son correctos, intente nuevamente.");
-                }
-            }
-        }
-        // 2.
-        static void AsignReferenceValue()
-        {
-            Console.WriteLine("Indique el monto de referencia");
-            int newReferenceValue = evtInt();
-            Repository.referenceValue = newReferenceValue;
-            Console.WriteLine($"El nuevo monto de referencia es: {Repository.referenceValue}");
-        }
-        // 3.
-        static void MatchesByPlayer()
-        {
-            string myPlayer = evtString("Ingrese el nombre del jugador");
-            List<Match> matchList = repository.GetAllMatches();
-            int totalMatches = 0;
-            /*
-            foreach (Match m in matchList)
-            {
-                if () totalMatches++;                
-            }
-            */
-        }
-        // 4.
-        static void PlayersExpelled()
-        {
-            List<Match> matchList = repository.GetAllMatches();
-        }
-        // 5.
-        static void MatchWithMoreGoals()
-        {
-            List<Match> matchList = repository.GetAllMatches();
-        }
-        // 6.
-        static void PlayersWhoScored()
-        {
-            List<Match> matchList = repository.GetAllMatches();
-        }
-
-
+        #endregion*/               
     }
 }

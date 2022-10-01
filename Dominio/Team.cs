@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-    public class Team
+    public class Team : IValidate
     {
         #region Attributes
         private Country country;
@@ -22,12 +22,14 @@ namespace Dominio
         {
             this.country = country;
             this.players = players;
+            this.Validate();
         }
         #endregion
 
         #region Methods
         public Boolean Validate()
         {
+            if (players.Count < 11 || country == null) return false;
             return true;
         }
         #endregion

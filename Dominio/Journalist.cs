@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-    public class Journalist
+    public class Journalist : IValidate
     {
         #region Attributes
         private int id;
@@ -28,6 +28,7 @@ namespace Dominio
             this.name = name;
             this.mail = mail;
             this.password = password;
+            this.Validate();
         }
         #endregion
 

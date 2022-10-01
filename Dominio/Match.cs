@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-    public abstract class Match
+    public abstract class Match : IValidate
     {
         #region Atributes
         private static int counter = 0;
@@ -13,7 +13,7 @@ namespace Dominio
         private Team visitingTeam;
         private DateTime expectedDate;
         private Boolean hasEnded;
-        //event list
+        private List<Event> events = new List<Event>();
         private string result;
         #endregion
 
@@ -23,6 +23,7 @@ namespace Dominio
         public Team VisitingTeam { get => visitingTeam; set => visitingTeam = value; }
         public DateTime ExpectedDate { get => expectedDate; set => expectedDate = value; }
         public bool HasEnded { get => hasEnded; set => hasEnded = value; }
+        public List<Event> Events { get => events; set => events = value; }
         public string Result { get => result; set => result = value; }
         #endregion
 
@@ -34,7 +35,9 @@ namespace Dominio
             this.visitingTeam = visitingTeam;
             this.expectedDate = expectedDate;
             this.hasEnded = false;
+            this.events = new List<Event>();
             this.result = "pendiente";
+            this.Validate();
         }
 
         public abstract void finalizeMatch();
@@ -43,6 +46,8 @@ namespace Dominio
         #region Methods
         public Boolean Validate()
         {
+            if (localTeam == null || visitingTeam == null) return false;
+            if (expectedDate < DateTime.Parse("20/11/2022") || expectedDate > DateTime.Parse("18/12/2022")) return false;
             return true;
         }
         #endregion
