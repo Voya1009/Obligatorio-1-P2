@@ -962,7 +962,14 @@ namespace Dominio
             #endregion
 
             #region Group Stage Matches
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Uruguay")), GetTeam(GetCountry("Argentina")), new DateTime(2022,11,25), GroupMatch.Groups.A ));
+            AddEvent(GetMatch(1), new Event(Event.EventType.RedCard, 23, GetPlayerById(2)));
+            AddEvent(GetMatch(1), new Event(Event.EventType.RedCard, 25, GetPlayerById(3)));
 
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Argentina")), GetTeam(GetCountry("Brasil")), new DateTime(2022, 11, 26), GroupMatch.Groups.A));
+            AddEvent(GetMatch(2), new Event(Event.EventType.RedCard, 26, GetPlayerById(2)));
+
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Brasil")), GetTeam(GetCountry("Uruguay")), new DateTime(2022, 11, 27), GroupMatch.Groups.A));
             #endregion
 
             #region Playoffs Matches
@@ -973,27 +980,10 @@ namespace Dominio
 
             #endregion
         }
-        #endregion        
 
-        #region Methods
-
-        #region Evts
-        static int evtInt()
-        {
-            int result;
-            while (!int.TryParse(Console.ReadLine(), out result))
-            {
-                Console.WriteLine("Invalid value, please try again");
-            }
-            return result;
-        }
-        static string evtString(string mensaje)
-        {
-            Console.WriteLine(mensaje);
-            string texto = Console.ReadLine();
-            return texto;
-        }
         #endregion
+
+        #region Methods       
 
         #region Country
         public List<Country> GetAllCountries()
@@ -1049,6 +1039,17 @@ namespace Dominio
             }
             throw new Exception("El jugador no existe");
         }
+        public Player GetPlayerById(int id)
+        {
+            foreach (Player p in players)
+            {
+                if (p.Id == id)
+                {
+                    return p;
+                }
+            }
+            throw new Exception("El jugador no existe");
+        }
 
         public string AddPlayer(Player player)
         {
@@ -1079,6 +1080,24 @@ namespace Dominio
                 }
             }
             return playersFromCountry;
+        }
+        public List<Player> GetExpelledPlayers()
+        {
+            List<Player> expelledPlayers = new List<Player>();
+            foreach(Match m in matches)
+            {
+                foreach(Event e in m.Events)
+                {
+                    if(e.Incident == Event.EventType.RedCard)
+                    {
+                        if (!expelledPlayers.Contains(e.Player))
+                        {
+                            expelledPlayers.Add(e.Player);
+                        }
+                    }
+                }
+            }
+            return expelledPlayers;
         }
         #endregion
 
@@ -1179,6 +1198,36 @@ namespace Dominio
             }
             return "El partido que se intento registrar no es válido";
         }
+        public List<Match> GetMatchesByPlayer(int playerId)
+        {
+            List<Match> matchList = new List<Match>();
+            try
+            {
+                Player player = GetPlayerById(playerId);
+                foreach(Match m in matches)
+                {
+                    foreach(Player p in m.LocalTeam.Players)
+                    {
+                        if(p.Id == playerId)
+                        {
+                            matchList.Add(m);
+                        }
+                    }
+                    foreach (Player p in m.VisitingTeam.Players)
+                    {
+                        if (p.Id == playerId)
+                        {
+                            matchList.Add(m);
+                        }
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return matchList;
+        }
         #endregion
 
         #region Journalist
@@ -1217,74 +1266,14 @@ namespace Dominio
         }
         #endregion
 
-        #region Program Cases
-
-        // 1.
-        public void AskJournalist()
+        public void AddEvent(Match match, Event anEvent)
         {
-            Boolean valid = false;
-            while (!valid)
+            if (anEvent.Validate())
             {
-                string name = evtString("Ingrese el nombre completo del periodista.");
-                string mail = evtString("Ingrese el mail.");
-                string password = evtString("Ingrese la contraseña.");
-                Journalist newJournalist = new Journalist(name, mail, password);
-                if (newJournalist.Validate())
-                {
-                    valid = true;
-                    AddJournalist(newJournalist);
-                    Console.WriteLine("El periodista ha sido ingresado con éxito.");
-                }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Los datos ingresados no son correctos, intente nuevamente.");
-                }
+                match.Events.Add(anEvent);
             }
-        }
-
-        // 2.
-        public void AsignReferenceValue()
-        {
-            Console.WriteLine("Indique el monto de referencia");
-            int newReferenceValue = evtInt();
-            if (newReferenceValue <= 0) Console.WriteLine("El monto de referencia debe ser un valor mayor a 0");            
-            referenceValue = newReferenceValue;
-            Console.WriteLine($"El nuevo monto de referencia es: {referenceValue}");
-        }
-
-        // 3.
-        public void MatchesByPlayer()
-        {
-            string myPlayer = evtString("Ingrese el nombre del jugador");
-            List<Match> matchList = GetAllMatches();
-            int totalMatches = 0;
-            /*
-            foreach (Match m in matchList)
-            {
-                if () totalMatches++;                
-            }
-            */
-        }
-
-        // 4.
-        public void PlayersExpelled()
-        {
-            List<Match> matchList = GetAllMatches();
-        }
-
-        // 5.
-        public void MatchWithMoreGoals()
-        {
-            List<Match> matchList = GetAllMatches();
-        }
-
-        // 6.
-        public void PlayersWhoScored()
-        {
-            List<Match> matchList = GetAllMatches();
-        }
-        #endregion
+            
+        } 
 
         #endregion
     }

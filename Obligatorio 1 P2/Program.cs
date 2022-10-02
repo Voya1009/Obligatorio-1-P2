@@ -9,12 +9,14 @@ namespace Obligatorio_1_P2
         static Repository repository = Repository.Instance;
         private static string[] menuOptions =
             {
+                "-----------------------------------",
                 "1. Agregar periodista",
                 "2. Asignar monto de referencia",
                 "3. Listar partidos por jugador",
                 "4. Listar jugadores expulsados",
                 "5. Partido con mas goles efectuados (selección)",
-                "6. Listar Jugadores que hayan convertido"
+                "6. Listar Jugadores que hayan convertido",
+                "-----------------------------------"
             };
         static void Main(string[] args)
         {
@@ -22,7 +24,7 @@ namespace Obligatorio_1_P2
             while (selectedOption != 0)
             {
                 DisplayOptions(menuOptions);
-                selectedOption = evtInt();
+                selectedOption = evtInt("");
                 Console.Clear();
                 if (selectedOption != 0)
                 {
@@ -30,27 +32,27 @@ namespace Obligatorio_1_P2
                     {
                         case 1:
                             Console.Clear();
-                            repository.AskJournalist();
+                            AddJournalist();
                             break;
                         case 2:
                             Console.Clear();
-                            repository.AsignReferenceValue();
+                            AsignReferenceValue();
                             break;
                         case 3:
                             Console.Clear();
-                            repository.MatchesByPlayer();
+                            MatchesByPlayer();
                             break;
                         case 4:
                             Console.Clear();
-                            repository.PlayersExpelled();
+                            PlayersExpelled();
                             break;
                         case 5:
                             Console.Clear();
-                            repository.MatchWithMoreGoals();
+                            MatchWithMoreGoals();
                             break;
                         case 6:
                             Console.Clear();
-                            repository.PlayersWhoScored();
+                            PlayersWhoScored();
                             break;
                         default:
                             Console.WriteLine("El valor ingresado no es válido, intente nuevamente");
@@ -68,12 +70,13 @@ namespace Obligatorio_1_P2
         }
 
         #region Evts
-        static int evtInt()
+        static int evtInt(String message)
         {
+            Console.WriteLine(message);
             int result;
             while (!int.TryParse(Console.ReadLine(), out result))
             {
-                Console.WriteLine("Invalid value, please try again");
+                Console.WriteLine("Valor invalido, intente denuevo, ingrese numeros.");
             }
             return result;
         }
@@ -84,50 +87,91 @@ namespace Obligatorio_1_P2
             return texto;
         }
         #endregion
-
-        /*#region Country
-        static void AddCountry()
+        //1
+        public static void AddJournalist()
         {
             Boolean valid = false;
             while (!valid)
             {
-                string name = evtString("Ingrese el nombre del pais.");
-                string alphaThree = evtString("Ingrese el alhpaThree del pais.");
-                Country newCountry = new Country(name, alphaThree);
-                if (newCountry.Validate())
+                string name = evtString("Ingrese el nombre completo del periodista.");
+                string mail = evtString("Ingrese el mail.");
+                string password = evtString("Ingrese la contraseña.");
+                Journalist newJournalist = new Journalist(name, mail, password);
+                if (newJournalist.Validate())
                 {
                     valid = true;
-                    Console.WriteLine(repository.AddCountry(newCountry));
+                    repository.AddJournalist(newJournalist);
+                    Console.WriteLine("El periodista ha sido ingresado con éxito.");
                 }
                 else
                 {
                     Console.Clear();
-                    Console.WriteLine("Los datos ingresados no son correctos, intente denuevo.");
+                    Console.WriteLine("Los datos ingresados no son correctos, intente nuevamente.");
                 }
             }
         }
-        static void GetCountry()
+        //2
+        public static void AsignReferenceValue()
         {
-            string name = evtString("Ingrese el nombre del pais que desea buscar");
+            int newReferenceValue = evtInt("Indique el monto de referencia");
+            if (newReferenceValue <= 0) Console.WriteLine("El monto de referencia debe ser un valor mayor a 0");
+            repository.ReferenceValue = newReferenceValue;
+            Console.WriteLine($"El nuevo monto de referencia es: {repository.ReferenceValue}");
+        }
+        //3
+        public static void MatchesByPlayer()
+        {
+            int myPlayer = evtInt("Ingrese el id del jugador");
             try
             {
-                Country newCountry = repository.GetCountry(name);
-                Console.WriteLine(newCountry.ToString());
+                List<Match> matchList = repository.GetMatchesByPlayer(myPlayer);
+                if(matchList.Count > 0)
+                {
+                    Console.WriteLine($"El jugador de id {myPlayer} ha jugado en los siguientes partidos: ");
+                    foreach (Match m in matchList)
+                    {
+                        Console.WriteLine(m);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"El jugador de id {myPlayer} no ha participado en ningun partido");
+                }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 Console.WriteLine(e.Message);
             }
         }
-        static void GetAllCountries()
+        //4
+        public static void PlayersExpelled()
         {
-            Console.WriteLine("Paises registrados");
-            List<Country> countryList = repository.GetAllCountries();
-            foreach (Country c in countryList)
+            List<Player> playerList = repository.GetExpelledPlayers();
+            playerList.Sort();
+            if(playerList.Count > 0)
             {
-                Console.WriteLine(c.ToString());
+                foreach (Player p in playerList)
+                {
+                    //cambiar a to string
+                    Console.WriteLine(p.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No se encontraron jugadores expulsados");
             }
         }
-        #endregion*/               
+
+        // 5.
+        public static void MatchWithMoreGoals()
+        {
+            List<Match> matchList = repository.GetAllMatches();
+        }
+
+        // 6.
+        public static void PlayersWhoScored()
+        {
+            List<Match> matchList = repository.GetAllMatches();
+        }
     }
 }

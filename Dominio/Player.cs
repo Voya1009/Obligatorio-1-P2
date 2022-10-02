@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Dominio
 {
-    public class Player : IValidate
+    public class Player : IValidate, IComparable<object>
     {
         #region Attributes
         private int id;
@@ -50,6 +51,25 @@ namespace Dominio
             if (this.marketValue <= 0) return false;
             return true;            
         }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            Player otherPlayer = obj as Player;
+            if (otherPlayer != null)
+                if (otherPlayer.MarketValue != this.MarketValue)
+                {
+                    return otherPlayer.MarketValue.CompareTo(this.MarketValue);
+                }
+                else
+                {
+                    return this.Name.CompareTo(otherPlayer.Name);
+                }
+            else
+                throw new ArgumentException("Object is not a Temperature");
+        }
+
         #endregion
     }
 }

@@ -49,6 +49,11 @@ namespace Dominio
         }
 
         public abstract void FinalizeMatch();
+
+        public override string ToString()
+        {
+            return $"El partido de tipo {this.GetType()} entre {localTeam} y {visitingTeam} a las {expectedDate} con {events.Count} cantidad de incidencias";
+        }
         #endregion
     }
 }
