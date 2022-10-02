@@ -2,7 +2,7 @@
 
 namespace Dominio
 {
-    public class Player
+    public class Player : IValidate
     {
         #region Atributes
         private int id;
@@ -14,8 +14,7 @@ namespace Dominio
         private int marketValue;
         private string currencyType;
         private Country country;
-        private string position;
-        private static int referenceValue = 50000000;
+        private string position;        
         #endregion
 
         #region Properties
@@ -26,8 +25,7 @@ namespace Dominio
         public double Height { get => height; set => height = value; }
         public int MarketValue { get => marketValue; set => marketValue = value; }
         public Country Country { get => country; set => country = value; }
-        public string Position { get => position; set => position = value; }
-        public int ReferenceValue { get => referenceValue; set => referenceValue = value; }
+        public string Position { get => position; set => position = value; }        
         #endregion
 
         #region Constructors      
@@ -43,6 +41,7 @@ namespace Dominio
             this.currencyType = currencyType;
             this.country = country;
             this.position = position;
+            this.Validate();
         }
         #endregion
 
@@ -50,10 +49,7 @@ namespace Dominio
         public Boolean Validate()
         {
             if (this.marketValue <= 0) return false;
-            else
-            {
-                return true;
-            }
+            return true;            
         }
         #endregion
     }

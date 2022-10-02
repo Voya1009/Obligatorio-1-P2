@@ -30,40 +30,33 @@ namespace Obligatorio_1_P2
                     {
                         case 1:
                             Console.Clear();
-                            AddJournalist();
-                            Console.WriteLine("");
+                            repository.AskJournalist();
                             break;
                         case 2:
                             Console.Clear();
-                            AsignReferenceValue();
-                            Console.WriteLine("");
+                            repository.AsignReferenceValue();
                             break;
                         case 3:
                             Console.Clear();
-                            MatchesByPlayer();
-                            Console.WriteLine("");
+                            repository.MatchesByPlayer();
                             break;
                         case 4:
                             Console.Clear();
-                            PlayersExpelled();
-                            Console.WriteLine("");
+                            repository.PlayersExpelled();
                             break;
                         case 5:
                             Console.Clear();
-                            MatchWithMoreGoals();
-                            Console.WriteLine("");
+                            repository.MatchWithMoreGoals();
                             break;
                         case 6:
                             Console.Clear();
-                            PlayersWhoScored();
-                            Console.WriteLine("");
-                            break;                       
+                            repository.PlayersWhoScored();
+                            break;
                         default:
                             Console.WriteLine("El valor ingresado no es válido, intente nuevamente");
                             break;
                     }
                 }
-
             }
         }
         static void DisplayOptions(string[] recievedOptions)
@@ -73,13 +66,14 @@ namespace Obligatorio_1_P2
                 Console.WriteLine(option);
             }
         }
+
+        #region Evts
         static int evtInt()
         {
             int result;
             while (!int.TryParse(Console.ReadLine(), out result))
             {
                 Console.WriteLine("Invalid value, please try again");
-
             }
             return result;
         }
@@ -89,6 +83,9 @@ namespace Obligatorio_1_P2
             string texto = Console.ReadLine();
             return texto;
         }
+        #endregion
+
+        /*#region Country
         static void AddCountry()
         {
             Boolean valid = false;
@@ -131,5 +128,6 @@ namespace Obligatorio_1_P2
                 Console.WriteLine(c.ToString());
             }
         }
+        #endregion*/               
     }
 }

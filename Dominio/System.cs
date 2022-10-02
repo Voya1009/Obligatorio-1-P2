@@ -7,12 +7,14 @@ namespace Dominio
     public class Repository
     {
         #region Attributes
-        private static Repository instance;
+        public static Repository instance;
+        public static int referenceValue = 50000000;
         private List<Country> countries = new List<Country>();
         private List<Team> teams = new List<Team>();
         private List<Player> players = new List<Player>();
-        private List<Match> matches = new List<Match>();
         private List<Journalist> journalists = new List<Journalist>();
+        private List<Match> matches = new List<Match>();        
+        private List<Event> events = new List<Event>();
         #endregion
 
         #region Singleton
@@ -27,6 +29,16 @@ namespace Dominio
                 return instance;
             }
         }
+        #endregion
+
+        #region Properties
+        public int ReferenceValue { get => referenceValue; set => referenceValue = value; }
+        public List<Country> Countries { get => countries; }
+        public List<Team> Teams { get => teams; }
+        public List<Player> Players { get => players; }
+        public List<Match> Matches { get => matches; }
+        public List<Journalist> Journalists { get => journalists; }
+        public List<Event> Events { get => events; }
         #endregion
 
         #region Data Preload
@@ -946,7 +958,7 @@ namespace Dominio
             #endregion
 
             #region Journalists
-            AddJournalist(new Journalist(1, "Aitor Tilla", "haytortilla@gmail.com", "Tortillero"));
+            AddJournalist(new Journalist("Aitor Tilla", "haytortilla@gmail.com", "Tortillero"));
             #endregion
 
             #region Group Stage Matches
@@ -954,18 +966,32 @@ namespace Dominio
 
             #region Playoffs Matches
             #endregion
-        }
-        #endregion
 
-        #region Properties
-        public List<Country> Countries { get => countries; }
-        public List<Team> Teams { get => teams; }
-        public List<Player> Players { get => players; }
-        public List<Match> Matches { get => matches; }
-        public List<Journalist> Journalists { get => journalists; }
-        #endregion
+            #region Events
+
+            #endregion
+        }
+        #endregion        
 
         #region Methods
+
+        #region Evts
+        static int evtInt()
+        {
+            int result;
+            while (!int.TryParse(Console.ReadLine(), out result))
+            {
+                Console.WriteLine("Invalid value, please try again");
+            }
+            return result;
+        }
+        static string evtString(string mensaje)
+        {
+            Console.WriteLine(mensaje);
+            string texto = Console.ReadLine();
+            return texto;
+        }
+        #endregion
 
         #region Country
         public List<Country> GetAllCountries()
@@ -1170,7 +1196,6 @@ namespace Dominio
             }
             throw new Exception("El periodista que estabas buscando no fue registrado");
         }
-
         public string AddJournalist(Journalist journalist)
         {
             if (journalist.Validate())
@@ -1187,6 +1212,74 @@ namespace Dominio
                 }
             }
             return "El periodista que se intento ingresar no es válido.";
+        }
+        #endregion
+
+        #region Program Cases
+
+        // 1.
+        public void AskJournalist()
+        {
+            Boolean valid = false;
+            while (!valid)
+            {
+                string name = evtString("Ingrese el nombre completo del periodista.");
+                string mail = evtString("Ingrese el mail.");
+                string password = evtString("Ingrese la contraseña.");
+                Journalist newJournalist = new Journalist(name, mail, password);
+                if (newJournalist.Validate())
+                {
+                    valid = true;
+                    AddJournalist(newJournalist);
+                    Console.WriteLine("El periodista ha sido ingresado con éxito.");
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Los datos ingresados no son correctos, intente nuevamente.");
+                }
+            }
+        }
+
+        // 2.
+        public void AsignReferenceValue()
+        {
+            Console.WriteLine("Indique el monto de referencia");
+            int newReferenceValue = evtInt();
+            referenceValue = newReferenceValue;
+            Console.WriteLine($"El nuevo monto de referencia es: {referenceValue}");
+        }
+
+        // 3.
+        public void MatchesByPlayer()
+        {
+            string myPlayer = evtString("Ingrese el nombre del jugador");
+            List<Match> matchList = GetAllMatches();
+            int totalMatches = 0;
+            /*
+            foreach (Match m in matchList)
+            {
+                if () totalMatches++;                
+            }
+            */
+        }
+
+        // 4.
+        public void PlayersExpelled()
+        {
+            List<Match> matchList = GetAllMatches();
+        }
+
+        // 5.
+        public void MatchWithMoreGoals()
+        {
+            List<Match> matchList = GetAllMatches();
+        }
+
+        // 6.
+        public void PlayersWhoScored()
+        {
+            List<Match> matchList = GetAllMatches();
         }
         #endregion
 

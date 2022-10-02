@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Dominio
 {
-    public class Country
+    public class Country : IValidate
     {
         #region Atributes
         private string name;
@@ -21,16 +21,14 @@ namespace Dominio
         {
             this.name = name;
             this.alphaThree = alphaThree;
+            this.Validate();
         }
         #endregion
 
         #region Methods
         public Boolean Validate()
         {
-            if(this.AlphaThree.Length != 3)
-            {
-                return false;
-            }
+            if (alphaThree.Length != 3 || name == null) return false;
             return true;
         }
         public override string ToString()
@@ -42,7 +40,7 @@ namespace Dominio
             if (obj == null || GetType() != obj.GetType()) return false;
             Country c = (Country)obj;
             return c.Name.ToLower() == name.ToLower();
-        }       
+        }
         #endregion
     }
 }
