@@ -27,8 +27,7 @@ namespace Dominio
             this.id = ++lastId;
             this.name = name;
             this.mail = mail;
-            this.password = password;
-            this.Validate();
+            this.password = password;            
         }
         #endregion
 

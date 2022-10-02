@@ -20,8 +20,7 @@ namespace Dominio
         public Country(string name, string alphaThree)
         {
             this.name = name;
-            this.alphaThree = alphaThree;
-            this.Validate();
+            this.alphaThree = alphaThree;            
         }
         #endregion
 

@@ -962,9 +962,11 @@ namespace Dominio
             #endregion
 
             #region Group Stage Matches
+
             #endregion
 
             #region Playoffs Matches
+
             #endregion
 
             #region Events
@@ -1246,6 +1248,7 @@ namespace Dominio
         {
             Console.WriteLine("Indique el monto de referencia");
             int newReferenceValue = evtInt();
+            if (newReferenceValue <= 0) Console.WriteLine("El monto de referencia debe ser un valor mayor a 0");            
             referenceValue = newReferenceValue;
             Console.WriteLine($"El nuevo monto de referencia es: {referenceValue}");
         }

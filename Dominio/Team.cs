@@ -21,8 +21,7 @@ namespace Dominio
         public Team(Country country, List<Player> players)
         {
             this.country = country;
-            this.players = players;
-            this.Validate();
+            this.players = players;            
         }
         #endregion
 
