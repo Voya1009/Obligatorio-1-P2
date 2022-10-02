@@ -6,23 +6,23 @@ namespace Dominio
 {
     public abstract class Match : IValidate
     {
-        #region Atributes
+        #region Attributes
         private static int counter = 0;
         private int id;
         private Team localTeam;
         private Team visitingTeam;
         private DateTime expectedDate;
-        private Boolean hasEnded;
+        private Boolean finished;
         private List<Event> events = new List<Event>();
         private string result;
         #endregion
 
-        #region properties
+        #region Properties
         public int Id { get => id; set => id = value; }
         public Team LocalTeam { get => localTeam; set => localTeam = value; }
         public Team VisitingTeam { get => visitingTeam; set => visitingTeam = value; }
         public DateTime ExpectedDate { get => expectedDate; set => expectedDate = value; }
-        public bool HasEnded { get => hasEnded; set => hasEnded = value; }
+        public bool Finished { get => finished; set => finished = value; }
         public List<Event> Events { get => events; set => events = value; }
         public string Result { get => result; set => result = value; }
         #endregion
@@ -34,15 +34,12 @@ namespace Dominio
             this.localTeam = localTeam;
             this.visitingTeam = visitingTeam;
             this.expectedDate = expectedDate;
-            this.hasEnded = false;
+            this.finished = false;
             this.events = new List<Event>();
-            this.result = "pendiente";
-            this.Validate();
+            this.result = "pendiente";            
         }
-
-        public abstract void finalizeMatch();
         #endregion
-
+        
         #region Methods
         public Boolean Validate()
         {
@@ -50,6 +47,8 @@ namespace Dominio
             if (expectedDate < DateTime.Parse("20/11/2022") || expectedDate > DateTime.Parse("18/12/2022")) return false;
             return true;
         }
+
+        public abstract void FinalizeMatch();
         #endregion
     }
 }

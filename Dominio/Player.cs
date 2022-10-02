@@ -4,7 +4,7 @@ namespace Dominio
 {
     public class Player : IValidate
     {
-        #region Atributes
+        #region Attributes
         private int id;
         private string number;
         private string name;
@@ -40,8 +40,7 @@ namespace Dominio
             this.marketValue = marketValue;
             this.currencyType = currencyType;
             this.country = country;
-            this.position = position;
-            this.Validate();
+            this.position = position;            
         }
         #endregion
 
