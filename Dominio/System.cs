@@ -1162,6 +1162,7 @@ namespace Dominio
             }
             return playersFromCountry;
         }
+
         public List<Player> GetExpelledPlayers()
         {
             List<Player> expelledPlayers = new List<Player>();
@@ -1179,6 +1180,12 @@ namespace Dominio
                 }
             }
             return expelledPlayers;
+        }
+
+        public string GetPlayerCategory(Player player)
+        {
+            if (player.MarketValue >= referenceValue) return "VIP";
+            else return "Estándar";
         }
         #endregion
 
@@ -1347,6 +1354,11 @@ namespace Dominio
         }
         #endregion
 
+        #region Event
+        public List<Event> GetAllEvents()
+        {
+            return Events;
+        }        
         public void AddEvent(Match match, Event anEvent)
         {
             if (anEvent.Validate())
@@ -1355,6 +1367,7 @@ namespace Dominio
             }
 
         }
+        #endregion
 
         #endregion
     }

@@ -125,7 +125,7 @@ namespace Obligatorio_1_P2
             try
             {
                 List<Match> matchList = repository.GetMatchesByPlayer(myPlayer);
-                if(matchList.Count > 0)
+                if (matchList.Count > 0)
                 {
                     Console.WriteLine($"El jugador de id {myPlayer} ha jugado en los siguientes partidos: ");
                     foreach (Match m in matchList)
@@ -138,7 +138,7 @@ namespace Obligatorio_1_P2
                     Console.WriteLine($"El jugador de id {myPlayer} no ha participado en ningun partido");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -148,7 +148,7 @@ namespace Obligatorio_1_P2
         {
             List<Player> playerList = repository.GetExpelledPlayers();
             playerList.Sort();
-            if(playerList.Count > 0)
+            if (playerList.Count > 0)
             {
                 foreach (Player p in playerList)
                 {
@@ -166,12 +166,21 @@ namespace Obligatorio_1_P2
         public static void MatchWithMoreGoals()
         {
             List<Match> matchList = repository.GetAllMatches();
+
+
         }
 
         // 6.
         public static void PlayersWhoScored()
         {
-            List<Match> matchList = repository.GetAllMatches();
+            List<Event> eventList = repository.GetAllEvents();
+            foreach (Event e in eventList)
+            {
+                if (e.Incident == Event.EventType.Goal)
+                {
+                    Console.WriteLine($"Jugador: {e.Player}, Valor de mercado: {e.Player.MarketValue}, Categoría financiera: {repository.GetPlayerCategory(e.Player)}");
+                }
+            }
         }
     }
 }
