@@ -27,6 +27,7 @@ namespace Dominio
             this.player = player;
         }
         #endregion
+
         public bool Validate()
         {
             return true;

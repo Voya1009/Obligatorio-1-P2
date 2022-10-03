@@ -9,7 +9,7 @@ namespace Dominio
         #region Attributes
         private bool extension;
         private bool penalties;
-        public enum StageType { RoundOf16 = 1, Quarter = 2, Semi = 3, Final = 4 }
+        public enum StageType { RoundOf16 = 1, Quarters = 2, Semi = 3, Final = 4 }
         private StageType stage;
         #endregion
 
