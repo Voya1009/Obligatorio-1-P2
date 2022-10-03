@@ -52,7 +52,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            return $"El partido de tipo {this.GetType()} entre {localTeam} y {visitingTeam} a las {expectedDate} con {events.Count} cantidad de incidencias";
+            return $"El partido de tipo {this.GetType()} entre {localTeam} y {visitingTeam} el día {expectedDate} con {events.Count} cantidad de incidencias";
         }
         #endregion
     }
