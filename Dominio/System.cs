@@ -1187,6 +1187,18 @@ namespace Dominio
         }
         #endregion
 
+        public void ChangeReferenceValue(int newValue)
+        {
+            if(newValue > 0)
+            {
+                this.ReferenceValue = newValue;
+            }
+            else
+            {
+                throw new Exception("El monto ingresado no es valido");
+            }
+        }
+
         #region Team
         public List<Team> GetAllTeams()
         {
