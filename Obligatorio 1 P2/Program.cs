@@ -114,12 +114,19 @@ namespace Obligatorio_1_P2
         //2
         public static void AsignReferenceValue()
         {
-            int newReferenceValue = evtInt("Indique el monto de referencia");
-            if (newReferenceValue <= 0) Console.WriteLine("El monto de referencia debe ser un valor mayor a 0");
-            repository.ReferenceValue = newReferenceValue;
-            Console.WriteLine($"El nuevo monto de referencia es: {repository.ReferenceValue}");
+            try
+            {
+                int newReferenceValue = evtInt("Indique el monto de referencia");
+                if (newReferenceValue <= 0) Console.WriteLine("El monto de referencia debe ser un valor mayor a 0");
+                repository.ChangeReferenceValue(newReferenceValue);
+                Console.WriteLine($"El nuevo monto de referencia es: {repository.ReferenceValue}");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
-        //3 faltan to strings para que se vea lindo
         public static void MatchesByPlayer()
         {
             int myPlayer = evtInt("Ingrese el id del jugador");
@@ -154,7 +161,7 @@ namespace Obligatorio_1_P2
                 foreach (Player p in playerList)
                 {
                     //cambiar a to string
-                    Console.WriteLine(p.Name);
+                    Console.WriteLine(p);
                 }
             }
             else
@@ -193,7 +200,7 @@ namespace Obligatorio_1_P2
             List<Player> players = repository.GetAllPlayersThatScored();
             foreach (Player p in players)
             {
-                Console.WriteLine($"Jugador: {p.Name}, Valor de mercado: {p.MarketValue}, Categoría financiera: {repository.GetPlayerCategory(p)}");
+                Console.WriteLine($"{p}, Categoría financiera: {repository.GetPlayerCategory(p)}");
             }
         }
     }

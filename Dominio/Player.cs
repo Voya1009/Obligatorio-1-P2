@@ -69,6 +69,10 @@ namespace Dominio
             else
                 throw new ArgumentException("Object is not a Temperature");
         }
+        public override string ToString()
+        {
+            return $"Jugador: {this.Name}, Valor de mercado: {this.MarketValue}";
+        }
 
         #endregion
     }
