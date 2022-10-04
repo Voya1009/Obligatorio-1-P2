@@ -118,7 +118,7 @@ namespace Obligatorio_1_P2
             repository.ReferenceValue = newReferenceValue;
             Console.WriteLine($"El nuevo monto de referencia es: {repository.ReferenceValue}");
         }
-        //3
+        //3 faltan to strings para que se vea lindo
         public static void MatchesByPlayer()
         {
             int myPlayer = evtInt("Ingrese el id del jugador");
@@ -165,21 +165,34 @@ namespace Obligatorio_1_P2
         // 5.
         public static void MatchWithMoreGoals()
         {
-            List<Match> matchList = repository.GetAllMatches();
-
+            try
+            {
+                string team = evtString("Ingrese un equipo.");
+                Match match = repository.GetMoreGoalsMatch(team);
+                int numberOfGoals = 0;
+                foreach(Event e in match.Events)
+                {
+                    if(e.Incident == Event.EventType.Goal)
+                    {
+                        numberOfGoals++;
+                    }
+                }
+                Console.WriteLine($"El partido con mas goles fue el de {match.LocalTeam.Country.Name} contra {match.VisitingTeam.Country.Name} en el {match.ExpectedDate} con una cantidad de goles: {numberOfGoals}");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
         }
 
         // 6.
         public static void PlayersWhoScored()
         {
-            List<Event> eventList = repository.GetAllEvents();
-            foreach (Event e in eventList)
+            List<Player> players = repository.GetAllPlayersThatScored();
+            foreach (Player p in players)
             {
-                if (e.Incident == Event.EventType.Goal)
-                {
-                    Console.WriteLine($"Jugador: {e.Player}, Valor de mercado: {e.Player.MarketValue}, Categoría financiera: {repository.GetPlayerCategory(e.Player)}");
-                }
+                Console.WriteLine($"Jugador: {p.Name}, Valor de mercado: {p.MarketValue}, Categoría financiera: {repository.GetPlayerCategory(p)}");
             }
         }
     }

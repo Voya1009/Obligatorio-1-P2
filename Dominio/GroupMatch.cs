@@ -16,6 +16,10 @@ namespace Dominio
         {
             this.group = group;
         }
+        public GroupMatch() : base()
+        {
+
+        }
 
         public override void FinalizeMatch()
         {

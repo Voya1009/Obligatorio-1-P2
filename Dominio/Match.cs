@@ -30,13 +30,17 @@ namespace Dominio
         #region Constructors
         public Match(Team localTeam, Team visitingTeam, DateTime expectedDate)
         {
-            this.id = ++counter;
+            this.id = counter++;
             this.localTeam = localTeam;
             this.visitingTeam = visitingTeam;
             this.expectedDate = expectedDate;
             this.finished = false;
             this.events = new List<Event>();
             this.result = "pendiente";            
+        }
+        public Match()
+        {
+
         }
         #endregion
         

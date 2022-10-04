@@ -14,7 +14,6 @@ namespace Dominio
         private List<Player> players = new List<Player>();
         private List<Journalist> journalists = new List<Journalist>();
         private List<Match> matches = new List<Match>();
-        private List<Event> events = new List<Event>();
         #endregion
 
         #region Singleton
@@ -38,7 +37,6 @@ namespace Dominio
         public List<Player> Players { get => players; }
         public List<Match> Matches { get => matches; }
         public List<Journalist> Journalists { get => journalists; }
-        public List<Event> Events { get => events; }
         #endregion
 
         #region Data Preload
@@ -967,34 +965,34 @@ namespace Dominio
 
             // Partido 1
             AddMatch(new GroupMatch(GetTeam(GetCountry("Catar")), GetTeam(GetCountry("Ecuador")), new DateTime(2022, 11, 20), GroupMatch.Groups.A));
-            AddEvent(GetMatch(1), new Event(Event.EventType.Goal, 15, GetPlayerById(29)));
-            AddEvent(GetMatch(1), new Event(Event.EventType.YellowCard, 25, GetPlayerById(451)));
-            AddEvent(GetMatch(1), new Event(Event.EventType.RedCard, 75, GetPlayerById(30)));
+            AddEvent(GetMatch(0), new Event(Event.EventType.Goal, 15, GetPlayerById(29)));
+            AddEvent(GetMatch(0), new Event(Event.EventType.YellowCard, 25, GetPlayerById(451)));
+            AddEvent(GetMatch(0), new Event(Event.EventType.RedCard, 75, GetPlayerById(30)));
             // Partido 2
-            AddMatch(new GroupMatch(GetTeam(GetCountry("Senegal")), GetTeam(GetCountry("Paises Bajos")), new DateTime(2022, 11, 21), GroupMatch.Groups.A));
-            AddEvent(GetMatch(3), new Event(Event.EventType.Goal, 25, GetPlayerById(569)));
-            AddEvent(GetMatch(3), new Event(Event.EventType.YellowCard, 65, GetPlayerById(317)));
-            AddEvent(GetMatch(3), new Event(Event.EventType.RedCard, 85, GetPlayerById(570)));
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Senegal")), GetTeam(GetCountry("Países Bajos")), new DateTime(2022, 11, 21), GroupMatch.Groups.A));
+            AddEvent(GetMatch(1), new Event(Event.EventType.Goal, 25, GetPlayerById(569)));
+            AddEvent(GetMatch(1), new Event(Event.EventType.YellowCard, 65, GetPlayerById(317)));
+            AddEvent(GetMatch(1), new Event(Event.EventType.RedCard, 85, GetPlayerById(570)));
             // Partido 3
             AddMatch(new GroupMatch(GetTeam(GetCountry("Catar")), GetTeam(GetCountry("Senegal")), new DateTime(2022, 11, 25), GroupMatch.Groups.A));
-            AddEvent(GetMatch(18), new Event(Event.EventType.Goal, 35, GetPlayerById(31)));
-            AddEvent(GetMatch(18), new Event(Event.EventType.YellowCard, 55, GetPlayerById(571)));
-            AddEvent(GetMatch(18), new Event(Event.EventType.RedCard, 75, GetPlayerById(32)));
+            AddEvent(GetMatch(2), new Event(Event.EventType.Goal, 35, GetPlayerById(31)));
+            AddEvent(GetMatch(2), new Event(Event.EventType.YellowCard, 55, GetPlayerById(571)));
+            AddEvent(GetMatch(2), new Event(Event.EventType.RedCard, 75, GetPlayerById(32)));
             // Partido 4
-            AddMatch(new GroupMatch(GetTeam(GetCountry("Paises Bajos")), GetTeam(GetCountry("Ecuador")), new DateTime(2022, 11, 25), GroupMatch.Groups.A));
-            AddEvent(GetMatch(19), new Event(Event.EventType.Goal, 35, GetPlayerById(318)));
-            AddEvent(GetMatch(19), new Event(Event.EventType.YellowCard, 55, GetPlayerById(452)));
-            AddEvent(GetMatch(19), new Event(Event.EventType.RedCard, 75, GetPlayerById(319)));
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Países Bajos")), GetTeam(GetCountry("Ecuador")), new DateTime(2022, 11, 25), GroupMatch.Groups.A));
+            AddEvent(GetMatch(3), new Event(Event.EventType.Goal, 35, GetPlayerById(318)));
+            AddEvent(GetMatch(3), new Event(Event.EventType.YellowCard, 55, GetPlayerById(452)));
+            AddEvent(GetMatch(3), new Event(Event.EventType.RedCard, 75, GetPlayerById(319)));
             // Partido 5
             AddMatch(new GroupMatch(GetTeam(GetCountry("Ecuador")), GetTeam(GetCountry("Senegal")), new DateTime(2022, 11, 29), GroupMatch.Groups.A));
-            AddEvent(GetMatch(35), new Event(Event.EventType.Goal, 35, GetPlayerById(453)));
-            AddEvent(GetMatch(35), new Event(Event.EventType.YellowCard, 55, GetPlayerById(572)));
-            AddEvent(GetMatch(35), new Event(Event.EventType.RedCard, 75, GetPlayerById(454)));
+            AddEvent(GetMatch(4), new Event(Event.EventType.Goal, 35, GetPlayerById(453)));
+            AddEvent(GetMatch(4), new Event(Event.EventType.YellowCard, 55, GetPlayerById(572)));
+            AddEvent(GetMatch(4), new Event(Event.EventType.RedCard, 75, GetPlayerById(454)));
             // Partido 6
-            AddMatch(new GroupMatch(GetTeam(GetCountry("Paises Bajos")), GetTeam(GetCountry("Catar")), new DateTime(2022, 11, 29), GroupMatch.Groups.A));
-            AddEvent(GetMatch(36), new Event(Event.EventType.Goal, 35, GetPlayerById(320)));
-            AddEvent(GetMatch(36), new Event(Event.EventType.YellowCard, 55, GetPlayerById(33)));
-            AddEvent(GetMatch(36), new Event(Event.EventType.RedCard, 75, GetPlayerById(321)));
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Países Bajos")), GetTeam(GetCountry("Catar")), new DateTime(2022, 11, 29), GroupMatch.Groups.A));
+            AddEvent(GetMatch(5), new Event(Event.EventType.Goal, 35, GetPlayerById(320)));
+            AddEvent(GetMatch(5), new Event(Event.EventType.YellowCard, 55, GetPlayerById(33)));
+            AddEvent(GetMatch(5), new Event(Event.EventType.RedCard, 75, GetPlayerById(321)));
 
             #endregion
 
@@ -1002,34 +1000,34 @@ namespace Dominio
 
             // Partido 1
             AddMatch(new GroupMatch(GetTeam(GetCountry("Uruguay")), GetTeam(GetCountry("Corea del Sur")), new DateTime(2022, 11, 24), GroupMatch.Groups.H));
-            AddEvent(GetMatch(14), new Event(Event.EventType.Goal, 35, GetPlayerById(479)));
-            AddEvent(GetMatch(14), new Event(Event.EventType.YellowCard, 55, GetPlayerById(373)));
-            AddEvent(GetMatch(14), new Event(Event.EventType.RedCard, 75, GetPlayerById(480)));
+            AddEvent(GetMatch(6), new Event(Event.EventType.Goal, 35, GetPlayerById(479)));
+            AddEvent(GetMatch(6), new Event(Event.EventType.YellowCard, 55, GetPlayerById(373)));
+            AddEvent(GetMatch(6), new Event(Event.EventType.RedCard, 75, GetPlayerById(480)));
             // Partido 2
             AddMatch(new GroupMatch(GetTeam(GetCountry("Portugal")), GetTeam(GetCountry("Ghana")), new DateTime(2022, 11, 24), GroupMatch.Groups.H));
-            AddEvent(GetMatch(15), new Event(Event.EventType.Goal, 35, GetPlayerById(595)));
-            AddEvent(GetMatch(15), new Event(Event.EventType.YellowCard, 55, GetPlayerById(532)));
-            AddEvent(GetMatch(15), new Event(Event.EventType.RedCard, 75, GetPlayerById(596)));
+            AddEvent(GetMatch(7), new Event(Event.EventType.Goal, 35, GetPlayerById(595)));
+            AddEvent(GetMatch(7), new Event(Event.EventType.YellowCard, 55, GetPlayerById(532)));
+            AddEvent(GetMatch(7), new Event(Event.EventType.RedCard, 75, GetPlayerById(596)));
             // Partido 3
             AddMatch(new GroupMatch(GetTeam(GetCountry("Corea del Sur")), GetTeam(GetCountry("Ghana")), new DateTime(2022, 11, 28), GroupMatch.Groups.H));
-            AddEvent(GetMatch(32), new Event(Event.EventType.Goal, 35, GetPlayerById(374)));
-            AddEvent(GetMatch(32), new Event(Event.EventType.YellowCard, 55, GetPlayerById(533)));
-            AddEvent(GetMatch(32), new Event(Event.EventType.RedCard, 75, GetPlayerById(375)));
+            AddEvent(GetMatch(8), new Event(Event.EventType.Goal, 35, GetPlayerById(374)));
+            AddEvent(GetMatch(8), new Event(Event.EventType.YellowCard, 55, GetPlayerById(533)));
+            AddEvent(GetMatch(8), new Event(Event.EventType.RedCard, 75, GetPlayerById(375)));
             // Partido 4
             AddMatch(new GroupMatch(GetTeam(GetCountry("Portugal")), GetTeam(GetCountry("Uruguay")), new DateTime(2022, 11, 28), GroupMatch.Groups.H));
-            AddEvent(GetMatch(34), new Event(Event.EventType.Goal, 35, GetPlayerById(597)));
-            AddEvent(GetMatch(34), new Event(Event.EventType.YellowCard, 55, GetPlayerById(481)));
-            AddEvent(GetMatch(34), new Event(Event.EventType.RedCard, 75, GetPlayerById(598)));
+            AddEvent(GetMatch(9), new Event(Event.EventType.Goal, 35, GetPlayerById(597)));
+            AddEvent(GetMatch(9), new Event(Event.EventType.YellowCard, 55, GetPlayerById(481)));
+            AddEvent(GetMatch(9), new Event(Event.EventType.RedCard, 75, GetPlayerById(598)));
             // Partido 5
-            AddMatch(new GroupMatch(GetTeam(GetCountry("Corea del Sur")), GetTeam(GetCountry("Portugal")), new DateTime(2022, 11, 02), GroupMatch.Groups.H));
-            AddEvent(GetMatch(45), new Event(Event.EventType.Goal, 35, GetPlayerById(376)));
-            AddEvent(GetMatch(45), new Event(Event.EventType.YellowCard, 55, GetPlayerById(599)));
-            AddEvent(GetMatch(45), new Event(Event.EventType.RedCard, 75, GetPlayerById(377)));
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Corea del Sur")), GetTeam(GetCountry("Portugal")), new DateTime(2022, 12, 02), GroupMatch.Groups.H));
+            AddEvent(GetMatch(10), new Event(Event.EventType.Goal, 35, GetPlayerById(376)));
+            AddEvent(GetMatch(10), new Event(Event.EventType.YellowCard, 55, GetPlayerById(599)));
+            AddEvent(GetMatch(10), new Event(Event.EventType.RedCard, 75, GetPlayerById(377)));
             // Partido 6
-            AddMatch(new GroupMatch(GetTeam(GetCountry("Ghana")), GetTeam(GetCountry("Uruguay")), new DateTime(2022, 11, 02), GroupMatch.Groups.H));
-            AddEvent(GetMatch(46), new Event(Event.EventType.Goal, 35, GetPlayerById(534)));
-            AddEvent(GetMatch(46), new Event(Event.EventType.YellowCard, 55, GetPlayerById(482)));
-            AddEvent(GetMatch(46), new Event(Event.EventType.RedCard, 75, GetPlayerById(535)));
+            AddMatch(new GroupMatch(GetTeam(GetCountry("Ghana")), GetTeam(GetCountry("Uruguay")), new DateTime(2022, 12, 02), GroupMatch.Groups.H));
+            AddEvent(GetMatch(11), new Event(Event.EventType.Goal, 35, GetPlayerById(534)));
+            AddEvent(GetMatch(11), new Event(Event.EventType.YellowCard, 55, GetPlayerById(482)));
+            AddEvent(GetMatch(11), new Event(Event.EventType.RedCard, 75, GetPlayerById(535)));
 
             #endregion
 
@@ -1037,25 +1035,25 @@ namespace Dominio
 
             // Partido A1 vs H2  
             AddMatch(new PlayOffsMatch(GetTeam(GetCountry("Países Bajos")), GetTeam(GetCountry("Uruguay")), new DateTime(2022, 12, 03), true, false, PlayOffsMatch.StageType.RoundOf16));
-            AddEvent(GetMatch(49), new Event(Event.EventType.Goal, 35, GetPlayerById(483)));
-            AddEvent(GetMatch(49), new Event(Event.EventType.Goal, 55, GetPlayerById(484)));
-            AddEvent(GetMatch(49), new Event(Event.EventType.Goal, 75, GetPlayerById(322)));
-            AddEvent(GetMatch(49), new Event(Event.EventType.YellowCard, 80, GetPlayerById(485)));
-            AddEvent(GetMatch(49), new Event(Event.EventType.RedCard, 85, GetPlayerById(323)));
+            AddEvent(GetMatch(12), new Event(Event.EventType.Goal, 35, GetPlayerById(483)));
+            AddEvent(GetMatch(12), new Event(Event.EventType.Goal, 55, GetPlayerById(484)));
+            AddEvent(GetMatch(12), new Event(Event.EventType.Goal, 75, GetPlayerById(322)));
+            AddEvent(GetMatch(12), new Event(Event.EventType.YellowCard, 80, GetPlayerById(485)));
+            AddEvent(GetMatch(12), new Event(Event.EventType.RedCard, 85, GetPlayerById(323)));
             // Partido H1 vs A2
             AddMatch(new PlayOffsMatch(GetTeam(GetCountry("Corea del Sur")), GetTeam(GetCountry("Catar")), new DateTime(2022, 12, 03), false, false, PlayOffsMatch.StageType.RoundOf16));
-            AddEvent(GetMatch(50), new Event(Event.EventType.Goal, 35, GetPlayerById(578)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.Goal, 55, GetPlayerById(34)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.Goal, 75, GetPlayerById(579)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.YellowCard, 80, GetPlayerById(580)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.RedCard, 85, GetPlayerById(35)));
+            AddEvent(GetMatch(13), new Event(Event.EventType.Goal, 35, GetPlayerById(578)));
+            AddEvent(GetMatch(13), new Event(Event.EventType.Goal, 55, GetPlayerById(34)));
+            AddEvent(GetMatch(13), new Event(Event.EventType.Goal, 75, GetPlayerById(579)));
+            AddEvent(GetMatch(13), new Event(Event.EventType.YellowCard, 80, GetPlayerById(580)));
+            AddEvent(GetMatch(13), new Event(Event.EventType.RedCard, 85, GetPlayerById(35)));
             // Partido A vs H
             AddMatch(new PlayOffsMatch(GetTeam(GetCountry("Uruguay")), GetTeam(GetCountry("Corea del Sur")), new DateTime(2022, 12, 09), true, true, PlayOffsMatch.StageType.Quarters));
-            AddEvent(GetMatch(50), new Event(Event.EventType.Goal, 45, GetPlayerById(486)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.Goal, 55, GetPlayerById(581)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.Goal, 85, GetPlayerById(487)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.Goal, 95, GetPlayerById(582)));
-            AddEvent(GetMatch(50), new Event(Event.EventType.YellowCard, 100, GetPlayerById(488)));
+            AddEvent(GetMatch(14), new Event(Event.EventType.Goal, 45, GetPlayerById(486)));
+            AddEvent(GetMatch(14), new Event(Event.EventType.Goal, 55, GetPlayerById(581)));
+            AddEvent(GetMatch(14), new Event(Event.EventType.Goal, 85, GetPlayerById(486)));
+            AddEvent(GetMatch(14), new Event(Event.EventType.Goal, 95, GetPlayerById(582)));
+            AddEvent(GetMatch(14), new Event(Event.EventType.YellowCard, 100, GetPlayerById(488)));
 
             #endregion
 
@@ -1316,6 +1314,36 @@ namespace Dominio
             }
             return matchList;
         }
+        public Match GetMoreGoalsMatch(string team)
+        {
+            Match matchWithMoreGoals = new GroupMatch();
+            int maxGoals = -1;
+            foreach(Match m in Matches)
+            {
+                if(m.VisitingTeam.Country.Name.ToLower() == team.ToLower() || m.LocalTeam.Country.Name.ToLower() == team.ToLower())
+                {
+                    int goalsInMatch = 0;
+                    foreach(Event e in m.Events)
+                    {
+                        if (e.Incident == Event.EventType.Goal) goalsInMatch++;
+                    }
+                    if(goalsInMatch > maxGoals)
+                    {
+                        matchWithMoreGoals = m;
+                        maxGoals = goalsInMatch;
+                    }
+                }
+            }
+            if(matchWithMoreGoals.LocalTeam != null)
+            {
+                return matchWithMoreGoals;
+            }
+            else
+            {
+                throw new Exception("El equipo seleccionado no tiene partidos jugados");
+            }
+        }
+
         #endregion
 
         #region Journalist
@@ -1355,9 +1383,25 @@ namespace Dominio
         #endregion
 
         #region Event
-        public List<Event> GetAllEvents()
+        public List<Player> GetAllPlayersThatScored()
         {
-            return Events;
+            List<Player> scorers = new List<Player>();
+            foreach(Match m in Matches)
+            {
+                foreach(Event e in m.Events)
+                {
+                    if(e.Incident == Event.EventType.Goal)
+                    {
+                        //making sure we dont duplicate players in the list
+                        if (!scorers.Contains(e.Player))
+                        {
+                            scorers.Add(e.Player);
+                        }
+                    }
+                    //if the event is not a goal we dont capture the player
+                }
+            }
+            return scorers;
         }        
         public void AddEvent(Match match, Event anEvent)
         {
