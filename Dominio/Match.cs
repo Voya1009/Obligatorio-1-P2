@@ -56,7 +56,7 @@ namespace Dominio
 
         public override string ToString()
         {
-            return $"El partido de tipo {this.GetType()} entre {localTeam} y {visitingTeam} el día {expectedDate} con {events.Count} cantidad de incidencias";
+            return $"El partido de tipo {(this.GetType().ToString() == "Dominio.PlayOffsMatch" ? "eliminatoria" : "fase de grupos")} entre {localTeam} y {visitingTeam} el día {expectedDate.ToShortDateString()} con {events.Count} cantidad de incidencias";
         }
         #endregion
     }

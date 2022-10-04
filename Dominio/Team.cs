@@ -31,6 +31,10 @@ namespace Dominio
             if (players.Count < 11 || country == null) return false;
             return true;
         }
+        public override string ToString()
+        {
+            return this.Country.Name;
+        }
         #endregion
     }
 }

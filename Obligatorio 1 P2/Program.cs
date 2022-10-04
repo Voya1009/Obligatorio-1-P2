@@ -16,6 +16,7 @@ namespace Obligatorio_1_P2
                 "4. Listar jugadores expulsados",
                 "5. Partido con mas goles efectuados (selección)",
                 "6. Listar Jugadores que hayan convertido",
+                "0. Para salir",
                 "-----------------------------------"
             };
         static void Main(string[] args)
